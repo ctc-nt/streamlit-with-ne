@@ -7,6 +7,8 @@ JANOG53で発表するLTのために簡易的に用意したデモです。
 対象装置はJANOG(JApan Network Operators Group)にちなんで国産の装置を対象にしたかったので、
 SEIKO SmartCS 2250を利用させていただきました。
 
+```mermaid
 sequenceDiagram
     Streamlit->>BackendPython: Call Get tty Configration
     BackendPython->>SEIKO SmartCS 2250: REST : hogehoge
+```
