@@ -9,8 +9,18 @@ SEIKO SmartCS 2250を利用させていただきました。
 
 ```mermaid
 sequenceDiagram
+    Streamlit->>BackendPython: Call Get system information
+    BackendPython->>SEIKO SmartCS 2250: GET : api/system/version
+    SEIKO SmartCS 2250 -->> BackendPython:  Response : system  info
+    BackendPython -->> Streamlit: Return : system  info
     Streamlit->>BackendPython: Call Get tty Configration
-    BackendPython->>SEIKO SmartCS 2250: REST : hogehoge
+    BackendPython->>SEIKO SmartCS 2250: GET : api/serial/tty
+    SEIKO SmartCS 2250 -->> BackendPython:  Response : tty info
+    BackendPython -->> Streamlit: Return : tty info
+    Streamlit->>BackendPython: Call Modify tty Configration
+    BackendPython->>SEIKO SmartCS 2250: POST : api/serial/tty
+    SEIKO SmartCS 2250 -->> BackendPython:  Response : result
+    BackendPython -->> Streamlit: Return : result
 ```
 
 # How to run
