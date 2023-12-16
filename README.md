@@ -12,3 +12,32 @@ sequenceDiagram
     Streamlit->>BackendPython: Call Get tty Configration
     BackendPython->>SEIKO SmartCS 2250: REST : hogehoge
 ```
+
+# How to run
+
+Python3.11.1で動作確認をしています。
+おそらく3.6以降だったら動きます。
+
+必要なpackageをinstallしてください
+
+```
+pip install -r requirements.txt
+```
+
+.env.sampleのip,password,user,passwordを指定してください。
+以下の情報が必要になります。
+
+- ip : コンソールサーバーのIPアドレス
+- port : コンソールサーバーのREST Serverのport(Default80)
+- user : RESET API用ユーザー名
+- password :  REST API用ユーザーパスワード
+
+```
+source .env.sample
+```
+
+streamlitを起動します
+
+```
+streamlit run app.py
+```

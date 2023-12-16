@@ -1,0 +1,16 @@
+@baseurl = myConsoleIP:10080/api/v1
+
+### version等の取得
+
+GET http://{{baseurl}}/system/version
+Authorization: Basic rest:rest
+
+### user情報の取得
+
+GET http://{{baseurl}}/users
+Authorization: Basic rest:rest
+
+### tty情報の取得
+
+GET http://{{baseurl}}/serial/tty
+Authorization: Basic rest:rest
