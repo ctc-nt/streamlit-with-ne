@@ -1,16 +1,60 @@
-@baseurl = myConsoleIP:10080/api/v1
+@baseurl = 172.17.12.222:10080/api/v1
 
 ### version等の取得
 
 GET http://{{baseurl}}/system/version
 Authorization: Basic rest:rest
 
+### log情報の取得
+
+GET http://{{baseurl}}/log/history/webapi
+Authorization: Basic rest:rest
+
+
 ### user情報の取得
 
 GET http://{{baseurl}}/users
 Authorization: Basic rest:rest
 
-### tty情報の取得
+### tty情報一覧の取得
 
 GET http://{{baseurl}}/serial/tty
 Authorization: Basic rest:rest
+
+### tty情報詳細の取得
+
+GET http://{{baseurl}}/serial/tty/5
+Authorization: Basic rest:rest
+
+
+### tty情報の設定変更
+
+PUT http://{{baseurl}}/serial/tty/5
+Content-Type: application/json
+Authorization: Basic rest:rest
+
+{
+    "baud": 115200,
+    "bitchar": 8,
+    "parity": "none",
+    "stop": 1,
+    "flow": "none",
+    "detect_dsr": "off",
+    "label": ""
+}
+
+
+
+### userの追加
+
+POST http://{{baseurl}}/users
+Content-Type: application/json
+Accept: application/json
+Authorization: Basic rest:rest
+
+{
+    "name": "hoge",
+    "group": "portusr",
+    "password": "hoge",
+    "port": 1
+}

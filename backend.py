@@ -11,7 +11,8 @@ baseurl = f"http://{ip}:{port}/api/v1"
 encoded_auth = base64.b64encode(f"{user}:{password}".encode())
 
 headers = {
-    'authorization': f"Basic {encoded_auth.decode()}"
+    'authorization': f"Basic {encoded_auth.decode()}",
+    'content-type': "application/json",
     }
 
 def get_system_version():
@@ -25,3 +26,7 @@ def get_users():
 def get_tty():
     url = baseurl + "/serial/tty"
     return requests.request("GET", url, headers=headers).json()
+
+def change_tty(tty,payload):
+    url = baseurl + f"/serial/tty/{tty}"
+    return requests.request("PUT", url, headers=headers,json=payload).json()
